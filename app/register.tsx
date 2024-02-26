@@ -4,6 +4,12 @@ import { Link } from 'expo-router'
 import ColorsOp from '../const/colorsOp'
 import IMRS_Button from '../components/IMRS_button'
 import {insertNewAccount} from "../fetch/insertNewAccount";
+import { LinearGradient } from 'expo-linear-gradient'
+
+const START = { x: 0.5, y: 0 }
+const END = { x: 0.5, y: 1 }
+const GRADIENT_COLORS = [ColorsOp.BL, ColorsOp.WH]
+const GRADIENT_LOCATIONS = [0, 0.45, 1]
 
 export default function Register() {
     const [username, onChangeUsernameField] = React.useState('');
@@ -36,6 +42,7 @@ export default function Register() {
 
     return (
         <View style={container}>
+            <LinearGradient colors={GRADIENT_COLORS} style={styles.container} locations={GRADIENT_LOCATIONS} start={START} end={END} >
             <Text style={pageTitle}>Register</Text>
             <View>
                 <View style={infoRow}>
@@ -92,6 +99,7 @@ export default function Register() {
             <Link href='/firstregister' asChild>
                 <Button title='open Responder Register' />
             </Link>
+            </LinearGradient>
         </View>
     )
 }
@@ -99,7 +107,7 @@ export default function Register() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: ColorsOp.JB,
+        backgroundColor: ColorsOp.BL,
         paddingTop: 20,
     },
     pageTitle: {
