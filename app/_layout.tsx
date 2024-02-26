@@ -8,9 +8,10 @@ export default function _layout() {
         <Stack
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: ColorsOp.RO
+                    backgroundColor: ColorsOp.BL
                 },
-                headerTintColor: '#FF5733'//red orange
+                headerTintColor: '#FF5733',//red orange
+                headerShown: false
             }}
         >
             <Stack.Screen name="landingPage" options={{
