@@ -17,8 +17,6 @@ export default function Register() {
     const [confirmPassword, onChangeConfirmPasswordField] = React.useState('');
     const [firstName, onChangeFirstNameField] = React.useState('');
     const [lastName, onChangeLastNameField] = React.useState('');
-    const [email, onChangeEmailField] = React.useState('');
-    const [school, onChangeSchoolField] = React.useState('');
     
     const {
         container,
@@ -38,7 +36,6 @@ export default function Register() {
                 console.error('Account creation failed:', error);
             })
     }
-    handleRegister()
 
     return (
         <View style={container}>
@@ -61,21 +58,9 @@ export default function Register() {
                 </View>
                 <TextInput
                     style={input}
-                    onChangeText={onChangeSchoolField}
-                    value={school}
-                    placeholder='School Name'
-                />
-                <TextInput
-                    style={input}
-                    onChangeText={onChangeEmailField}
-                    value={email}
-                    placeholder='Email'
-                />
-                <TextInput
-                    style={input}
                     onChangeText={onChangeUsernameField}
                     value={username}
-                    placeholder='Username'
+                    placeholder='Email'
                 />
                 <TextInput
                     style={input}
@@ -91,7 +76,7 @@ export default function Register() {
                 />
             </View>
             <View style={registerButton}>
-                <IMRS_Button title={'Register'} onPress={ handleRegister } color='white' backgroundColor='#FF5733' />
+                <IMRS_Button title={'Register'} onPress={ handleRegister } color='white' backgroundColor={ColorsOp.BL} />
             </View>
             <Link href='/modal' asChild>
                 <Button title='open login modal' />
@@ -113,7 +98,7 @@ const styles = StyleSheet.create({
     pageTitle: {
         alignSelf: "center",
         fontSize: 50,
-        color: ColorsOp.RO
+        color: ColorsOp.JB
     },
     input: {
         height: 40,

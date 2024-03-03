@@ -76,7 +76,7 @@ export default function Login() {
             />
           </View>
           <View style={loginButton}>
-            <IMRS_Button title={'Login'} onPress={handleLogin} color='white' backgroundColor={ColorsOp.RO} />
+            <IMRS_Button title={'Login'} onPress={handleLogin} color='white' backgroundColor={ColorsOp.BL} />
           </View>
         </View>
         <View style={bottom}>
@@ -129,13 +129,13 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     paddingTop: 10,
     fontSize: 20,
-    color: ColorsOp.RO,
+    color: ColorsOp.JB,
     textAlign: 'center'
   },
   titleText: {
     alignSelf: "center",
     fontSize: 50,
-    color: ColorsOp.RO
+    color: ColorsOp.JB
   },
   loginButton: {
     paddingTop: 10,

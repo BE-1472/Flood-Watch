@@ -34,11 +34,6 @@ export default function LandingPage() {
                     <View style={topView}>
                         <Text style={title}>Flood Watch</Text>
                     </View>
-                    <View>
-                        {/* <Image
-                            source={require('assets/images/flood-text-tsunami-drawing-cartoon-line-area-smile-circle-png-clipart.png')}
-                        /> */}
-                    </View>
                     <View style={middleView}>
                         <Link href={'/login'} asChild>
                             <IMRS_Button title={'login'} color='white' backgroundColor={ColorsOp.BL} />

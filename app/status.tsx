@@ -4,7 +4,7 @@ import ColorsOp from "../const/colorsOp";
 import RadiusSwitch from "../components/RadiusSwitch";
 
 const Status = () => {
-    let shooterDescription:string = "White male, mid 30's, 5'10, 200lb, black shirt, blue jean, red cap" //temp
+    let shooterDescription:string = "Possible Zone AO" //temp
     let shootingLocation:string = "Pleasnt Park"
 
     const { 
@@ -21,7 +21,7 @@ const Status = () => {
         <View style={container}>
             <View style={warningMsgWrapper}>
                 <Text style={warningMsgText}>Warning</Text>
-                <Text style={warningMsgText}>Active Shooter in your Area!</Text>
+                <Text style={warningMsgText}>Active Flooding in your Area!</Text>
             </View>
             <View style={descriptionWrapper}>
                 <Text style={descriptionText}>Description:</Text>
@@ -52,7 +52,7 @@ const Status = () => {
 const styles = StyleSheet.create ({
     container: {
         flex: 1,
-        backgroundColor: ColorsOp.JB
+        backgroundColor: ColorsOp.BL
     },
     warningMsgWrapper: {
         paddingTop: 60,
@@ -70,7 +70,7 @@ const styles = StyleSheet.create ({
         paddingBottom: 40
     },
     descriptionText: {
-        color: ColorsOp.RO,
+        color: ColorsOp.JB,
         fontSize: 20
     },
     locationWrapper: {
@@ -79,7 +79,7 @@ const styles = StyleSheet.create ({
         paddingBottom: 40
     },
     locationText: {
-        color: ColorsOp.RO,
+        color: ColorsOp.JB,
         fontSize: 20,
         alignContent: 'flex-start'
     }
