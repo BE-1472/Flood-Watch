@@ -3,8 +3,8 @@ import React from 'react'
 import { Link } from 'expo-router'
 import ColorsOp from '../const/colorsOp'
 import IMRS_Button from '../components/IMRS_button'
-import {insertNewAccount} from "../fetch/insertNewAccount";
 import { LinearGradient } from 'expo-linear-gradient'
+import { createNewUser } from '../firebaseConfig'
 
 const START = { x: 0.5, y: 0 }
 const END = { x: 0.5, y: 1 }
@@ -12,7 +12,7 @@ const GRADIENT_COLORS = [ColorsOp.BL, ColorsOp.WH]
 const GRADIENT_LOCATIONS = [0, 0.45, 1]
 
 export default function Register() {
-    const [username, onChangeUsernameField] = React.useState('');
+    const [email, onChangeEmailField] = React.useState('');
     const [password, onChangePasswordField] = React.useState('');
     const [confirmPassword, onChangeConfirmPasswordField] = React.useState('');
     const [firstName, onChangeFirstNameField] = React.useState('');
@@ -28,7 +28,7 @@ export default function Register() {
     } = styles
 
     const handleRegister = (): void => {
-        insertNewAccount(password, username)
+        createNewUser(email, password)
             .then(response =>{
                 console.log('Account creation result:', response);
             })
@@ -58,8 +58,8 @@ export default function Register() {
                 </View>
                 <TextInput
                     style={input}
-                    onChangeText={onChangeUsernameField}
-                    value={username}
+                    onChangeText={onChangeEmailField}
+                    value={email}
                     placeholder='Email'
                 />
                 <TextInput
