@@ -4,6 +4,7 @@ import { Link } from "expo-router";
 import IMRS_Button from "../components/IMRS_button";
 import ColorsOp from '../const/colorsOp'
 import { LinearGradient } from "expo-linear-gradient";
+import { signInUser } from "../firebaseConfig";
 
 const START = { x: 0.5, y: 0 }
 const END = { x: 0.5, y: 1 }
@@ -12,26 +13,13 @@ const GRADIENT_LOCATIONS = [0, 0.45, 1]
 
 export default function Login() {
 
-  const [username, onChangeUsernameField] = React.useState('');
+  const [email, onChangeEmailField] = React.useState('');
   const [password, onChangePasswordField] = React.useState('');
 
   const handleLogin = (): void => {
-    var usrName = username
-    var pass = password
-
-    if (usrName === '' || pass === '') {
-      console.error('User\'s input values for username and/or password is empty. Aborting handleLogin()')
-    }
-    console.log('User\'s input values for username and password:', usrName, pass)
-    // verifyLogin(usrName, pass)
-    //   .then(response => {
-    //     console.log('Login verification result:', response);
-    //     // Handle successful login or failure based on the response
-    //   })
-    //   .catch(error => {
-    //     console.error('Login verification failed:', error);
-    //   });
+    signInUser(email, password)
   }
+
 
   const {
     container,
@@ -57,10 +45,10 @@ export default function Login() {
             <TextInput
               style={userPassInput}
               autoCapitalize='none'
-              autoComplete={"username"}
-              onChangeText={onChangeUsernameField}
-              value={username}
-              placeholder={'Username'}
+              autoComplete={"email"}
+              onChangeText={onChangeEmailField}
+              value={email}
+              placeholder={'Email'}
             />
           </View>
           <View>
