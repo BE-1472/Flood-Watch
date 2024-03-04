@@ -94,6 +94,11 @@ export default function Login() {
               <Button title="open Status page" />
             </Link>
           </View>
+          <View>
+            <Link href="/camera" asChild>
+              <Button title="open camera page" />
+            </Link>
+          </View>
         </View>
       </LinearGradient>
     </View>
