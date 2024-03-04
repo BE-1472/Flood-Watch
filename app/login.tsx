@@ -3,7 +3,6 @@ import React from "react";
 import { Link } from "expo-router";
 import IMRS_Button from "../components/IMRS_button";
 import ColorsOp from '../const/colorsOp'
-import { verifyLogin } from "../fetch/UsernamePasswordVerifyDynamoDB";
 import { LinearGradient } from "expo-linear-gradient";
 
 const START = { x: 0.5, y: 0 }
@@ -24,14 +23,14 @@ export default function Login() {
       console.error('User\'s input values for username and/or password is empty. Aborting handleLogin()')
     }
     console.log('User\'s input values for username and password:', usrName, pass)
-    verifyLogin(usrName, pass)
-      .then(response => {
-        console.log('Login verification result:', response);
-        // Handle successful login or failure based on the response
-      })
-      .catch(error => {
-        console.error('Login verification failed:', error);
-      });
+    // verifyLogin(usrName, pass)
+    //   .then(response => {
+    //     console.log('Login verification result:', response);
+    //     // Handle successful login or failure based on the response
+    //   })
+    //   .catch(error => {
+    //     console.error('Login verification failed:', error);
+    //   });
   }
 
   const {
