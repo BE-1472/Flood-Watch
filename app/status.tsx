@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Text, StyleSheet, View, Switch } from "react-native";
+import { Link } from "expo-router";
 import ColorsOp from "../const/colorsOp";
 import RadiusSwitch from "../components/RadiusSwitch";
+import IMRS_Button from "../components/IMRS_button";
 
 const Status = () => {
     let shooterDescription:string = "Possible Zone AO" //temp
@@ -14,7 +16,8 @@ const Status = () => {
         descriptionText,
         descriptionWrapper,
         locationText,
-        locationWrapper
+        locationWrapper,
+        cam_button
     } = styles
 
     return (
@@ -31,18 +34,23 @@ const Status = () => {
                 <Text style={locationText}>Location:</Text>
                 <Text style={locationText}>{shootingLocation}</Text>
             </View>
+            <View style={cam_button}>
+                    <Link href={'/camera'} asChild>
+                            <IMRS_Button title={'Upload Picture'} color='white' backgroundColor={ColorsOp.BL} />
+                    </Link>
+            </View>
             <View>
                 <RadiusSwitch 
                     backgroundColor= {ColorsOp.LG}
-                    text='I have Not Seen and I have Not Heard the shooter' 
+                    text='Not bad, easy to drive through' 
                 />
                 <RadiusSwitch 
                     backgroundColor='yellow' 
-                    text='I have Not Seen the shooter but I Can Hear the shooter'
+                    text='A little bad, may have trouble driving'
                 />
                 <RadiusSwitch 
                     backgroundColor= {ColorsOp.BR}
-                    text='I Can See or Have Seen the shooter and Can Hear the shooter'
+                    text='Really bad, Impossible to drive through'
                 />
             </View>
         </View>
@@ -82,6 +90,10 @@ const styles = StyleSheet.create ({
         color: ColorsOp.JB,
         fontSize: 20,
         alignContent: 'flex-start'
+    },
+    cam_button: {
+        alignItems: 'center',
+        padding: 20
     }
 })
 
