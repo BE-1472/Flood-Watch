@@ -1,49 +1,83 @@
 import React, { useState } from "react";
-import { Text, StyleSheet, View, Switch } from "react-native";
+import { Text, StyleSheet, View, Switch, Dimensions, Button } from "react-native";
 import ColorsOp from "../const/colorsOp";
 import RadiusSwitch from "../components/RadiusSwitch";
+import IMRS_Button from "../components/IMRS_button";
+
+const screenWidth = Dimensions.get('screen').width;
+const screenHeight = Dimensions.get('screen').height;
 
 const Status = () => {
-    let shooterDescription:string = "White male, mid 30's, 5'10, 200lb, black shirt, blue jean, red cap" //temp
-    let shootingLocation:string = "Pleasnt Park"
+    const [currentStatus, setStatus] = useState('Clear');
+    const [statusColor, setStatusColor] = useState('#2aad2c');
+
+    const handleStatusChange = (status : number) => {
+        console.log(status);
+        if(status == 0 ) {
+            setStatus('Clear');
+            setStatusColor('#2aad2c')
+        }
+        else if(status == 1) {
+            setStatus('Minimal Flooding');
+            setStatusColor('#dbc70f');
+        }
+        else if(status == 2) {
+            setStatus('Flooded');
+            setStatusColor('#db0f0f');
+        }
+        console.log(currentStatus);
+        }   
 
     const { 
-        container, 
-        warningMsgText, 
-        warningMsgWrapper,
+        container,
+        titleContainer,
+        titleText,
         descriptionText,
-        descriptionWrapper,
-        locationText,
-        locationWrapper
+        currentStatusContainer,
+        currentStatusTitle,
+        currentStatusText,
+        statusSectionContainer,
+        statusContainer,
+        statusButton
     } = styles
 
     return (
         <View style={container}>
-            <View style={warningMsgWrapper}>
-                <Text style={warningMsgText}>Warning</Text>
-                <Text style={warningMsgText}>Active Shooter in your Area!</Text>
+            <View style={titleContainer}>
+                <Text style={titleText}>Report Flood Status</Text>
+                <Text style={descriptionText}>Report the status of flooding near you</Text>
             </View>
-            <View style={descriptionWrapper}>
-                <Text style={descriptionText}>Description:</Text>
-                <Text style={descriptionText}>{shooterDescription}</Text>
+            <View style={currentStatusContainer}>
+                <Text style={currentStatusTitle}>Your Current Status</Text>
+                <Text style={[styles.currentStatusText, {color: statusColor}]}>{currentStatus}</Text>
             </View>
-            <View style={locationWrapper}>
-                <Text style={locationText}>Location:</Text>
-                <Text style={locationText}>{shootingLocation}</Text>
-            </View>
-            <View>
-                <RadiusSwitch 
-                    backgroundColor= {ColorsOp.LG}
-                    text='I have Not Seen and I have Not Heard the shooter' 
-                />
-                <RadiusSwitch 
-                    backgroundColor='yellow' 
-                    text='I have Not Seen the shooter but I Can Hear the shooter'
-                />
-                <RadiusSwitch 
-                    backgroundColor= {ColorsOp.BR}
-                    text='I Can See or Have Seen the shooter and Can Hear the shooter'
-                />
+            <View style={statusSectionContainer}>
+                <View style={statusContainer}>
+                    <Text style={descriptionText}>Clear</Text>
+                    <View>
+                        <Button
+                        onPress={() => handleStatusChange(0)}
+                        title='Clear'
+                        color='#2aad2c'
+                        />
+                    </View>
+                </View>
+                <View style={statusContainer}>
+                    <Text style={descriptionText}>Minimal Flooding</Text>
+                    <Button
+                        onPress={() => handleStatusChange(1)}
+                        title='Minimal Flooding'
+                        color='#dbc70f'
+                        />
+                </View>
+                <View style={statusContainer}>
+                    <Text style={descriptionText}>Flooded</Text>
+                    <Button
+                        onPress={() => handleStatusChange(2)}
+                        title='Flooded'
+                        color='#db0f0f'
+                        />
+                </View>
             </View>
         </View>
     )
@@ -54,34 +88,39 @@ const styles = StyleSheet.create ({
         flex: 1,
         backgroundColor: ColorsOp.JB
     },
-    warningMsgWrapper: {
-        paddingTop: 60,
-        paddingBottom: 40
+    titleContainer: {
+        alignItems: 'center',
+        paddingTop: screenHeight * 0.05
     },
-    warningMsgText: {
-        color: ColorsOp.RO,
+    titleText: {
+        fontSize: 40,
+        fontWeight: 'bold',
         alignSelf: 'center',
-        fontSize: 30,
-        fontWeight: 'bold'
-    },
-    descriptionWrapper: {
-        paddingLeft: 20,
-        paddingRight: 20,
-        paddingBottom: 40
+        color: '#FFFFFF'
     },
     descriptionText: {
-        color: ColorsOp.RO,
-        fontSize: 20
+        fontSize: 18,
+        color: '#FFFFFF'
     },
-    locationWrapper: {
-        paddingLeft: 20,
-        paddingRight: 20,
-        paddingBottom: 40
+    currentStatusContainer: {
+        paddingTop: screenHeight * 0.025,
+        alignItems: 'center'
     },
-    locationText: {
-        color: ColorsOp.RO,
-        fontSize: 20,
-        alignContent: 'flex-start'
+    currentStatusTitle: {
+        fontSize: 25,
+        color: '#FFFFFF'
+    },
+    currentStatusText: {
+        fontSize: 30
+    },
+    statusSectionContainer:  {
+        paddingTop: screenHeight * 0.05
+    },
+    statusContainer: {
+        paddingBottom: screenHeight * 0.05
+    },
+    statusButton: {
+        color: '#505050'
     }
 })
 
