@@ -14,7 +14,7 @@ const Status = () => {
     const [statusColor, setStatusColor] = useState('#2aad2c');
 
     const handleStatusChange = (status : number) => {
-        console.log(status);
+        //console.log(status);
         if(status == 0 ) {
             setStatus('Clear');
             setStatusColor('#2aad2c')
@@ -27,7 +27,7 @@ const Status = () => {
             setStatus('Flooded');
             setStatusColor('#db0f0f');
         }
-        console.log(currentStatus);
+        //console.log(currentStatus);
         }   
 
     const { 
