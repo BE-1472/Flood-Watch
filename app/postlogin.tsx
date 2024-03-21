@@ -35,26 +35,4 @@ const MainPage: React.FC = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    //alignItems: 'center',
-    //backgroundColor: 'skyblue',
-    backgroundColor: ColorsOp.JB, 
-  },
-  button: {
-    backgroundColor: 'white',
-    padding: 30,
-    borderRadius: 30,
-    marginTop: 10,
-  },
-  buttonText: {
-    color: 'skyblue', 
-    fontWeight: 'bold',
-    textAlign: 'center',
-    fontSize:20,
-  },
-});
-
 export default MainPage;
