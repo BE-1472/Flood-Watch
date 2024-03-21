@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Text, StyleSheet, View, Switch, Dimensions, Button } from "react-native";
+import { Text, StyleSheet, View, Switch, Dimensions, Button, Pressable } from "react-native";
 import ColorsOp from "../const/colorsOp";
 import RadiusSwitch from "../components/RadiusSwitch";
 import IMRS_Button from "../components/IMRS_button";
 
 const screenWidth = Dimensions.get('screen').width;
 const screenHeight = Dimensions.get('screen').height;
+const buttonWidth = screenWidth * .75;
+const buttonHeight = screenHeight * .06;
 
 const Status = () => {
     const [currentStatus, setStatus] = useState('Clear');
@@ -38,7 +40,11 @@ const Status = () => {
         currentStatusText,
         statusSectionContainer,
         statusContainer,
-        statusButton
+        statusButton,
+        clearButton,
+        minimalFloodingButton,
+        floodedButton,
+        buttonText
     } = styles
 
     return (
@@ -53,30 +59,25 @@ const Status = () => {
             </View>
             <View style={statusSectionContainer}>
                 <View style={statusContainer}>
-                    <Text style={descriptionText}>Clear</Text>
-                    <View>
-                        <Button
-                        onPress={() => handleStatusChange(0)}
-                        title='Clear'
-                        color='#2aad2c'
-                        />
+                    <View style={statusButton}>
+                        <Pressable onPress={() => handleStatusChange(0)} style={clearButton}>
+                            <Text style={buttonText}>Clear</Text>
+                        </Pressable>
                     </View>
                 </View>
                 <View style={statusContainer}>
-                    <Text style={descriptionText}>Minimal Flooding</Text>
-                    <Button
-                        onPress={() => handleStatusChange(1)}
-                        title='Minimal Flooding'
-                        color='#dbc70f'
-                        />
+                    <View style={statusButton}>
+                        <Pressable onPress={() => handleStatusChange(1)} style={minimalFloodingButton}>
+                            <Text style={buttonText}>Minimal Flooding</Text>
+                        </Pressable>
+                    </View>
                 </View>
                 <View style={statusContainer}>
-                    <Text style={descriptionText}>Flooded</Text>
-                    <Button
-                        onPress={() => handleStatusChange(2)}
-                        title='Flooded'
-                        color='#db0f0f'
-                        />
+                    <View style={statusButton}>
+                    <Pressable onPress={() => handleStatusChange(2)} style={floodedButton}>
+                        <Text style={buttonText}>Flooded</Text>
+                    </Pressable>
+                    </View>
                 </View>
             </View>
         </View>
@@ -111,7 +112,8 @@ const styles = StyleSheet.create ({
         color: '#FFFFFF'
     },
     currentStatusText: {
-        fontSize: 30
+        fontSize: 30,
+        marginBottom: screenHeight * .09,
     },
     statusSectionContainer:  {
         paddingTop: screenHeight * 0.05
@@ -120,8 +122,43 @@ const styles = StyleSheet.create ({
         paddingBottom: screenHeight * 0.05
     },
     statusButton: {
-        color: '#505050'
+        alignItems: 'center'
+    },
+    clearButton: {
+        
+        backgroundColor: '#2aad2c',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minWidth: buttonWidth,
+        minHeight: buttonHeight,
+        borderRadius: 20,
+        borderWidth: 2,
+        elevation: 3
+    },
+    minimalFloodingButton:{
+        backgroundColor: '#b8a70d',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minWidth: buttonWidth,
+        minHeight: buttonHeight,
+        borderRadius: 20,
+        borderWidth: 2,
+        elevation: 3
+    },
+    floodedButton: {
+        backgroundColor: '#db0f0f',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minWidth: buttonWidth,
+        minHeight: buttonHeight,
+        borderRadius: 20,
+        borderWidth: 2,
+        elevation: 3,
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 32
     }
 })
 
-export default Status
+export default Status //#b8a70d
